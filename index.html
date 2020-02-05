@@ -32,7 +32,7 @@
     function kk(){
        
         var lolz = document.getElementById('lolz');
-        fetch(lolz.value,{credentials: "include",mode:'cors'}).then(resp => resp.blob())
+        fetch(lolz.value,{credentials: "include",mode:'no-cors'}).then(resp => resp.blob())
                         .then(blob => {
                             const url = window.URL.createObjectURL(blob);
                             const a = document.createElement('a');
