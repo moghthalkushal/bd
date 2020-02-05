@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script> var __basePath = ''; </script>
+<style media="only screen">
+    html, body {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        box-sizing: border-box;
+        -webkit-overflow-scrolling: touch;
+    }
+    html {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 0;
+        overflow: auto;
+    }
+    body {
+        padding: 1rem;
+        overflow: auto;
+    }
+</style>
+
+<body>
+<input type="text" name="enter" class="enter" value="" id="lolz"/>
+    <input type="button" value="click" onclick="kk();"/>
+</body>
+<script type="text/javascript">
+   
+    function kk(){
+       
+        var lolz = document.getElementById('lolz');
+        fetch(lolz.value).then(resp => resp.blob())
+                        .then(blob => {
+                            const url = window.URL.createObjectURL(blob);
+                            const a = document.createElement('a');
+                            a.style.display = 'none';
+                            a.href = url;
+                            // the filename you want
+                            a.download = "download.las";
+                            document.body.appendChild(a);
+                            a.click();
+                            window.URL.revokeObjectURL(url);
+                            // alert('your file has downloaded!'); // or you know, something with better UX...
+                        })
+                        .catch(() => alert('oh no!'))
+    }
+</script>
+</html>
